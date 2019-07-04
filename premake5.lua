@@ -15,13 +15,13 @@ project "Engine"
 	kind "SharedLib"
 	language "C++"
 
-	targetdir ("bin/" .. outputdir .. "/%${prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%${prj.name}")
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
-		"${prj.name}/src/**.h",
-		"${prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
@@ -74,18 +74,18 @@ project "BoidGame"
 	kind "ConsoleApp"
 	language "C++"
 
-	targetdir ("bin/" .. outputdir .. "/%${prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%${prj.name}")
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
-		"${prj.name}/src/**.h",
-		"${prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include",
+		"Engine/vendor/spdlog/include",
 		"Engine/src"
 	}
 
