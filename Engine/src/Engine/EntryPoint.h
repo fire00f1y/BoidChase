@@ -8,9 +8,7 @@ int main(int argc, char** argv)
 {
 	Engine::Log::Init();
 
-	ENGINE_ERROR("there was not really an error");
-	int a = 5;
-	CLIENT_INFO("Hello! Var={0}", a);
+	ENGINE_INFO("Engine started successfully");
 
 	auto app = Engine::CreateApplication();
 	app->Run();
