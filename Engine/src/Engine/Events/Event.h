@@ -1,5 +1,6 @@
 #pragma once
 
+#include "precompiled.h"
 #include "Engine/Core.h"
 #include "spdlog/fmt/ostr.h"
 

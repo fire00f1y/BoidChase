@@ -24,7 +24,7 @@ project "Engine"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "precompiled.h"
-	pchsource "%{prj.name}/src/Engine/precompiled.cpp"
+	pchsource "%{prj.name}/src/precompiled.cpp"
 
 	files
 	{
@@ -53,7 +53,8 @@ project "Engine"
 		defines
 		{
 			"ENGINE_BUILD_DLL",
-			"ENGINE_WINDOWS"
+			"ENGINE_WINDOWS",
+			"ENGINE_ENABLE_ASSERT"
 		}
 
 		postbuildcommands
