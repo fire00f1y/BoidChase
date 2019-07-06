@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "Events/ApplicationEvent.h"
+#include "Events/KeyEvent.h"
 #include "Log.h"
 
 namespace Engine {
@@ -24,6 +25,23 @@ namespace Engine {
 		ENGINE_INFO("Received event: {0}", e);
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<KeyPressedEvent>(BIND_EVENT_FN(HandleKeyDown));
+		dispatcher.Dispatch<KeyReleasedEvent>(BIND_EVENT_FN(HandleKeyUp));
+	}
+
+	bool Application::HandleKeyDown(KeyPressedEvent& e)
+	{
+		// Escape key quits!
+		if (e.GetKeyCode() == 256) {
+			OnWindowClose(WindowCloseEvent());
+		}
+
+		return true;
+	}
+
+	bool Application::HandleKeyUp(KeyReleasedEvent& e)
+	{
+		return true;
 	}
 
 	void Application::Run() {

@@ -32,6 +32,9 @@ namespace Engine {
 		WindowMoveEvent(unsigned int x, unsigned int y)
 			: m_Xpos(x), m_Ypos(y) {}
 
+		inline unsigned int GetX() const { return m_Xpos; }
+		inline unsigned int GetY() const { return m_Ypos; }
+
 		std::string ToString() const override
 		{
 			std::stringstream ss;
