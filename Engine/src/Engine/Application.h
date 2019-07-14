@@ -4,6 +4,7 @@
 #include "Events/ApplicationEvent.h"
 #include "Events/KeyEvent.h"
 #include "Window.h"
+#include "LayerStack.h"
 
 namespace Engine {
 
@@ -16,12 +17,16 @@ namespace Engine {
 		void OnEvent(Event& e);
 		void Run();
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
 	private:
+		std::unique_ptr<Window> m_Window;
+		bool m_Running = true;
+		LayerStack m_LayerStack;
+
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool HandleKeyDown(KeyPressedEvent& e);
 		bool HandleKeyUp(KeyReleasedEvent& e);
-		std::unique_ptr<Window> m_Window;
-		bool m_Running = true;
 	};
 
 	// To be defined in the client, via EntryPoint.h

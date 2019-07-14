@@ -29,6 +29,16 @@ namespace Engine {
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<KeyPressedEvent>(BIND_EVENT_FN(HandleKeyDown));
 		dispatcher.Dispatch<KeyReleasedEvent>(BIND_EVENT_FN(HandleKeyUp));
+
+		// TODO: Why do we not need to add a negative step?
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
+		{
+			(*--it)->OnEvent(e);
+			if (e.Handled)
+			{
+				break;
+			}
+		}
 	}
 
 	bool Application::HandleKeyDown(KeyPressedEvent& e)
@@ -48,11 +58,28 @@ namespace Engine {
 
 	void Application::Run() {
 		while (m_Running) {
-			//m_Window->Draw();
+			glClearColor(1, 1, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnUpdate();
+			}
+
 			m_Window->OnUpdate();
 		}
 
 		glfwTerminate();
+	}
+
+	void Application::PushLayer(Layer * layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer * layer)
+	{
+		m_LayerStack.PushOverlay(layer);
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)

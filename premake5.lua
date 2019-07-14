@@ -68,6 +68,7 @@ project "Engine"
 
 	filter "configurations:Debug"
 		optimize "Off"
+		buildoptions "/MDd"
 
 		defines
 		{
@@ -76,6 +77,7 @@ project "Engine"
 
 	filter "configurations:Release"
 		optimize "On"
+		buildoptions "/MDd"
 
 		defines
 		{
@@ -84,6 +86,7 @@ project "Engine"
 
 	filter "configurations:Dist"
 		optimize "On"
+		buildoptions "/MDd"
 
 		defines
 		{
@@ -127,6 +130,7 @@ project "BoidGame"
 
 	filter "configurations:Debug"
 		optimize "Off"
+		buildoptions "/MDd"
 
 		defines
 		{
@@ -135,6 +139,7 @@ project "BoidGame"
 
 	filter "configurations:Release"
 		optimize "On"
+		buildoptions "/MDd"
 
 		defines
 		{
@@ -143,6 +148,7 @@ project "BoidGame"
 
 	filter "configurations:Dist"
 		optimize "On"
+		buildoptions "/MDd"
 
 		defines
 		{
