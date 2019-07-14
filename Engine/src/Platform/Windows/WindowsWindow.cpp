@@ -6,7 +6,6 @@
 #include "Engine/Events/KeyEvent.h"
 #include "Engine/Events/MouseEvent.h"
 
-
 namespace Engine {
 
 	static bool s_GLFWInitialized = false;
@@ -49,12 +48,22 @@ namespace Engine {
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+
+		if (!m_Window) 
+		{
+			ENGINE_CRITICAL("COULD NOT CREATE GLFW WINDOW");
+		}
+
 		glfwMakeContextCurrent(m_Window);
+		if (!gladLoadGL())
+		{
+			ENGINE_CRITICAL("Failed to load GLAD");
+		}
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
 		// Event callbacks
-
 		// Mouse events
 		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -191,5 +200,4 @@ namespace Engine {
 	{
 		glfwDestroyWindow(m_Window);
 	}
-
 }

@@ -5,6 +5,8 @@
 #include "Events/KeyEvent.h"
 #include "Log.h"
 
+#include "GLFW/glfw3.h"
+
 namespace Engine {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -46,8 +48,11 @@ namespace Engine {
 
 	void Application::Run() {
 		while (m_Running) {
+			//m_Window->Draw();
 			m_Window->OnUpdate();
 		}
+
+		glfwTerminate();
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
