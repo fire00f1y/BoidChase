@@ -53,6 +53,7 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\precompiled.h" />
+    <ClInclude Include="src\Engine\ImGui\ImGuiLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application.cpp">
@@ -71,5 +72,6 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\precompiled.cpp" />
+    <ClCompile Include="src\Engine\ImGui\ImGuiLayer.cpp" />
   </ItemGroup>
 </Project>

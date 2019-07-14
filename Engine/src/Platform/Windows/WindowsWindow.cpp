@@ -55,10 +55,8 @@ namespace Engine {
 		}
 
 		glfwMakeContextCurrent(m_Window);
-		if (!gladLoadGL())
-		{
-			ENGINE_CRITICAL("Failed to load GLAD");
-		}
+		int gladStatus = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		ENGINE_ASSERT(gladStatus, "Failed to initialize Glad!!");
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
